@@ -15,7 +15,7 @@ class BooksApp extends React.Component {
         )}
       />
       <Route path='/' exact render={() => (
-          <Shelf />
+          <Shelf shelves="['Currently Reading', 'Want to Read', 'Read']"/>
         )}
       />
       </div>
