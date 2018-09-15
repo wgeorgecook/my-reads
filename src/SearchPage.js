@@ -28,11 +28,13 @@ class SearchBar extends Component {
 
     checkBooks = (query) => {
       (query.length > 0) ? this.searchBooks(query) : this.clearBooks()
-      console.log(this.state.availableBooks)
     }
 
     searchBooks = (query) => {
-      BooksAPI.search(query).then( (availableBooks) => this.setState( {availableBooks} ) )
+      BooksAPI.search(query)
+      .then( (availableBooks) => this.setState( {availableBooks} ) )
+      .then( () => console.log(this.state.availableBooks) )
+
     }
 
     clearBooks = () => {
