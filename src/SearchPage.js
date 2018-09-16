@@ -37,8 +37,8 @@ class SearchBar extends Component {
 
     }
 
-    clearBooks = () => {
-      BooksAPI.getAll().then( (availableBooks) => this.setState( {availableBooks} ) )
+    clearBooks() {
+      this.setState( { availableBooks: this.props.defaultBooks })
     }
 
     componentDidMount() {
