@@ -10,15 +10,15 @@ class SearchBar extends Component {
     }
 
     changeButton =
-    <div className="book-shelf-changer">
-      <select>
-        <option value="move" disabled>Move to...</option>
-        <option value="currentlyReading">Currently Reading</option>
-        <option value="wantToRead">Want to Read</option>
-        <option value="read">Read</option>
-        <option value="none">None</option>
-      </select>
-    </div>
+        <div className="book-shelf-changer">
+        <select>
+            <option value="move" disabled>Move to...</option>
+            <option value="currentlyReading">Currently Reading</option>
+            <option value="wantToRead">Want to Read</option>
+            <option value="read">Read</option>
+            <option value="none">None</option>
+        </select>
+        </div>
 
 
     updateQuery = (query) => {
@@ -37,8 +37,8 @@ class SearchBar extends Component {
 
     }
 
-    clearBooks = () => {
-      BooksAPI.getAll().then( (availableBooks) => this.setState( {availableBooks} ) )
+    clearBooks() {
+      this.setState( { availableBooks: this.props.defaultBooks })
     }
 
     componentDidMount() {
