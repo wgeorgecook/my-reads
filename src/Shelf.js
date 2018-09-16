@@ -4,7 +4,15 @@ import Change from './Change.js'
 
 class Shelf extends Component {
 
+    state = {
+        currentlyReading: [],
+        wantToRead: [],
+        read: []
+    }
 
+    updateShelf(shelf, book) {
+        console.log(shelf + book)
+    }
 
     render() {
         return (
@@ -14,8 +22,6 @@ class Shelf extends Component {
             </div>
             <div className="list-books-content">
               <div className='shelf-map'>
-
-
                 { this.props.shelves.map( (shelf, index) =>
                 <div className="bookshelf" key={index}>
                   <h2 className="bookshelf-title">{ shelf.name }</h2>
@@ -26,7 +32,10 @@ class Shelf extends Component {
                             <div className="book">
                                 <div className="book-top">
                                 <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
-                                    <Change book={book}/>
+                                    <Change
+                                        book={book}
+                                        onChange={this.updateShelf}
+                                    />
                                 </div>
                                 <div className="book-title">{book.title}</div>
                                 <div className="book-authors">{book.authors}</div>
