@@ -8,10 +8,7 @@ import './App.css'
 class BooksApp extends React.Component {
 
   state = {
-    books: [],
-    currentlyReading: [],
-    wantToRead: [],
-    read: []
+    books: [], // JUST ADD THINGS TO THIS ARRAY AND FILTER IT
   }
 
   getAll() {
@@ -28,17 +25,11 @@ class BooksApp extends React.Component {
     // .then( (books) => books.map( (book) => this.setState({ [book.shelf]: book })))
   }
 
-  updateShelf = (books, shelf, oldShelf) => {
-    (oldShelf) ?
-    this.setState( (prevState) => (
-      {[shelf]: prevState[shelf].concat(books),
-      [oldShelf]: prevState[oldShelf].splice( (oldShelf.indexOf(books)), 1)
-    }) )
-    :
-    this.setState( (prevState) => (
-      {[shelf]: prevState[shelf].concat(books)
-    }) )
+  updateShelf = (book) => {
 
+    this.setState( (prevState) => (
+      { book: prevState[book].concat(book)
+    }) )
   }
 
 
@@ -60,10 +51,11 @@ class BooksApp extends React.Component {
       <Route path='/' exact render={ () => (
           <Shelf
             shelves={
-              [{ name: "Currently Reading", category: 'currentlyReading', items: this.state.currentlyReading},
-              { name: "Want to Read", category: 'wantToRead', items: this.state.wantToRead},
-              { name: "Read", category: 'read', items: this.state.read}]
+              [{ name: "Currently Reading", category: 'currentlyReading'},
+              { name: "Want to Read", category: 'wantToRead'},
+              { name: "Read", category: 'read'}]
             }
+            books={this.state.books}
             onModifyShelf={this.updateShelf}
           />
         )}
