@@ -27,7 +27,7 @@ class Shelf extends Component {
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                         { (shelf.items.length > 0) ?
-                            shelf.items.filter(books => books.shelf === shelf.category).map( (book, bookIndex) =>
+                            shelf.items.map( (book, bookIndex) =>
                                 <li key={bookIndex}>
                                 <div className="book">
                                     <div className="book-top">

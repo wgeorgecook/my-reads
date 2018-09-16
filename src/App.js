@@ -29,9 +29,7 @@ class BooksApp extends React.Component {
   }
 
   updateShelf = (books, shelf) => {
-    let oldShelf = this.state[shelf]
-    let newShelf = oldShelf.push(books)
-    this.setState({ [shelf]: newShelf })
+    this.setState( (prevState) => ({ [shelf]: prevState[shelf].concat(books) }) )
     console.log(this.state[shelf])
   }
 
@@ -42,7 +40,6 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-      <div>Books: {this.state.read.title}</div>
       <Route path='/search' exact render={ () => (
           <SearchPage
             onModifyShelf={this.updateShelf}
