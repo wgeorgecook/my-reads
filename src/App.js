@@ -10,12 +10,14 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-      <Route path='/search' exact render={() => (
+      <Route path='/search' exact render={ () => (
           <SearchPage />
         )}
       />
-      <Route path='/' exact render={() => (
-          <Shelf shelves="['Currently Reading', 'Want to Read', 'Read']"/>
+      <Route path='/' exact render={ () => (
+          <Shelf
+            shelves={ [ "Currently Reading", "Want to Read", "Read" ] }
+          />
         )}
       />
       </div>
