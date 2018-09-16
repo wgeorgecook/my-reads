@@ -25,13 +25,18 @@ class BooksApp extends React.Component {
       <div className="app">
       <Route path='/search' exact render={ () => (
           <SearchPage
-            defaultBooks={this.state.books}
+            defaultBooks={ this.state.books }
           />
         )}
       />
       <Route path='/' exact render={ () => (
           <Shelf
-            shelves={ [ "Currently Reading", "Want to Read", "Read" ] }
+            shelves={[
+              { name: "Currently Reading", category: 'currentlyReading' },
+              { name: "Want to Read", category: 'wantToRead'},
+              { name: "Read", category: 'read'}
+            ]}
+            defaultBooks ={ this.state.books }
           />
         )}
       />

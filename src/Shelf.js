@@ -22,21 +22,25 @@ class Shelf extends Component {
             </div>
             <div className="list-books-content">
               <div className='shelf-map'>
+
+
                 { this.props.shelves.map( (shelf, index) =>
                 <div className="bookshelf" key={index}>
-                  <h2 className="bookshelf-title">{ shelf }</h2>
+                  <h2 className="bookshelf-title">{ shelf.name }</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                      <li>
-                        <div className="book">
-                          <div className="book-top">
-                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url("http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api")' }}></div>
-                                { this.changeButton }
-                          </div>
-                          <div className="book-title">To Kill a Mockingbird</div>
-                          <div className="book-authors">Harper Lee</div>
-                        </div>
-                      </li>
+                        { this.props.defaultBooks.filter(books => books.shelf === shelf.category).map( (book, bookIndex) =>
+                            <li key={bookIndex}>
+                            <div className="book">
+                                <div className="book-top">
+                                <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
+                                    { this.changeButton }
+                                </div>
+                                <div className="book-title">{book.title}</div>
+                                <div className="book-authors">{book.author}</div>
+                            </div>
+                            </li>
+                        )}
                     </ol>
                   </div>
                 </div>
