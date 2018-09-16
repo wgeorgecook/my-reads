@@ -33,6 +33,10 @@ class SearchBar extends Component {
       this.setState( { availableBooks: [] })
     }
 
+    updateShelf = (book, shelf) => {
+        this.props.onModifyShelf(book, shelf)
+    }
+
     componentDidMount() {
       this.clearBooks()
     }
@@ -63,7 +67,10 @@ class SearchBar extends Component {
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div> :
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(https://www.google.com/search?q=no+image&tbm=isch&source=iu&ictx=1&fir=zK3_S7lOQ0LI6M%253A%252C029W-ajBtZqZzM%252C_&usg=AFrqEzclmm0bX0EC_BHoSGDZD9in3lmmHg&sa=X&ved=2ahUKEwjwxdTx277dAhUTO30KHXXyCwQQ9QEwAHoECAUQBA#)` }}></div>
                       }
-                        <Change book={book}/>
+                        <Change
+                            book={book}
+                            onChangeShelf={this.updateShelf}
+                        />
                       </div>
                       <div className="book-title">{book.title}</div>
                       <div className="book-authors">{book.authors}</div>

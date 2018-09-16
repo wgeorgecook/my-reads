@@ -11,7 +11,7 @@ class Change extends Component {
     changeShelf(value) {
         // console.log(this.props.book.shelf)
         // this.props.book.shelf = value
-        console.log(this.props.onChangeShelf)
+        this.props.onChangeShelf(this.props.book, value)
         BooksAPI.update(this.props.book, value)
 
 

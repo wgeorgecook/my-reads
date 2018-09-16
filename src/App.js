@@ -19,6 +19,13 @@ class BooksApp extends React.Component {
     .then( (books) => this.setState({ books }))
   }
 
+  updateShelf = (books, shelf) => {
+    let oldShelf = this.state[shelf]
+    let newShelf = oldShelf.push(books)
+    this.setState({ [shelf]: newShelf })
+    console.log(this.state)
+  }
+
   componentDidMount() {
     this.getAll()
   }
@@ -29,18 +36,19 @@ class BooksApp extends React.Component {
 
       <Route path='/search' exact render={ () => (
           <SearchPage
-            defaultBooks={ this.state.books }
+            onModifyShelf={this.updateShelf}
           />
         )}
       />
 
       <Route path='/' exact render={ () => (
           <Shelf
-            shelves={[
-              { name: "Currently Reading", category: 'currentlyReading', items: this.state.currentlyReading},
+            shelves={
+              [{ name: "Currently Reading", category: 'currentlyReading', items: this.state.currentlyReading},
               { name: "Want to Read", category: 'wantToRead', items: this.state.wantToRead},
-              { name: "Read", category: 'read', items: this.state.read}
-            ]}
+              { name: "Read", category: 'read', items: this.state.read}]
+            }
+            onModifyShelf={this.updateShelf}
           />
         )}
 
