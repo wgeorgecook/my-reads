@@ -3,22 +3,27 @@ html, body, .root {
 }
 body {
   line-height: 1.5;
+
 }
 body, .app {
-  background: white;
+  background: lightblue;
+  background-image: url("https://www.transparenttextures.com/patterns/always-grey.png"); /* Background pattern from Subtle Patterns */
 }
+
 
 /* main page */
 
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
+  background: lightsalmon;
   text-align: center;
 }
 .list-books-title h1 {
   font-weight: 400;
+  font-size: 48pt;
   margin: 0;
-  color: white;
+  color: lightblue;
+  font-family: pacifico, sans-serif;
 }
 
 .list-books-content {
@@ -37,7 +42,8 @@ body, .app {
 }
 
 .bookshelf-title {
-  border-bottom: 1px solid #dedede;
+  color: lightsalmon;
+  border-bottom: 1px solid lightsalmon;
 }
 .bookshelf-books {
   text-align: center;
@@ -53,7 +59,7 @@ body, .app {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
+  background: lightsalmon;
   background-image: url('./icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -147,7 +153,7 @@ body, .app {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: lightsalmon;
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
