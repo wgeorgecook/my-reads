@@ -23,12 +23,14 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
+
       <Route path='/search' exact render={ () => (
           <SearchPage
             defaultBooks={ this.state.books }
           />
         )}
       />
+
       <Route path='/' exact render={ () => (
           <Shelf
             shelves={[
@@ -39,6 +41,7 @@ class BooksApp extends React.Component {
             defaultBooks ={ this.state.books }
           />
         )}
+
       />
       </div>
     )
