@@ -8,7 +8,10 @@ import './App.css'
 class BooksApp extends React.Component {
 
   state = {
-    books: []
+    books: [],
+    currentlyReading: [],
+    wantToRead: [],
+    read: []
   }
 
   getAll() {
@@ -34,11 +37,10 @@ class BooksApp extends React.Component {
       <Route path='/' exact render={ () => (
           <Shelf
             shelves={[
-              { name: "Currently Reading", category: 'currentlyReading' },
-              { name: "Want to Read", category: 'wantToRead'},
-              { name: "Read", category: 'read'}
+              { name: "Currently Reading", category: 'currentlyReading', items: this.state.currentlyReading},
+              { name: "Want to Read", category: 'wantToRead', items: this.state.wantToRead},
+              { name: "Read", category: 'read', items: this.state.read}
             ]}
-            defaultBooks ={ this.state.books }
           />
         )}
 

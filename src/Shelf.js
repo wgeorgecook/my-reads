@@ -6,12 +6,6 @@ import Change from './Change.js'
 
 class Shelf extends Component {
 
-    state = {
-        currentlyReading: [],
-        wantToRead: [],
-        read: []
-    }
-
 
     updateShelf = (shelf) => {
         /*
@@ -21,6 +15,7 @@ class Shelf extends Component {
         */
         console.log(this.state[shelf])
     }
+
 
 
     render() {
@@ -36,9 +31,8 @@ class Shelf extends Component {
                   <h2 className="bookshelf-title">{ shelf.name }</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                    {/* I need to update this using state and not props */}
-                        { (this.state[shelf]) ?
-                            this.state[shelf].filter(books => books.shelf === shelf.category).map( (book, bookIndex) =>
+                        { (shelf.items.length > 0) ?
+                            shelf.items.filter(books => books.shelf === shelf.category).map( (book, bookIndex) =>
                                 <li key={bookIndex}>
                                 <div className="book">
                                     <div className="book-top">
