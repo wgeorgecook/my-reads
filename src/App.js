@@ -14,21 +14,11 @@ class BooksApp extends React.Component {
   getAll() {
     BooksAPI.getAll()
     .then( (books) => this.setState( { books } ) )
-    .then(console.log(this.state.books))
-    /*
-    .then( (books) => books.map( (book) => // console.log(this.state[book.shelf]) ) )
-
-      this.setState( { [book.shelf]: book } )
-    ))
-    */
-
-    // .then( (books) => books.map( (book) => this.setState({ [book.shelf]: book })))
   }
 
   updateShelf = (book) => {
-
     this.setState( (prevState) => (
-      { book: prevState[book].concat(book)
+      { books: prevState.books.concat(book)
     }) )
   }
 
