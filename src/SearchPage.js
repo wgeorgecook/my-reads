@@ -30,7 +30,7 @@ class SearchBar extends Component {
     }
 
     clearBooks() {
-      this.setState( { availableBooks: this.props.defaultBooks })
+      this.setState( { availableBooks: [] })
     }
 
     componentDidMount() {

@@ -4,14 +4,14 @@ import * as BooksAPI from './BooksAPI'
 class Change extends Component {
 
     registerChange = (e) => {
-        // console.log(e.target.value)
+        console.log(e.target.value)
         this.changeShelf(e.target.value)
     }
 
     changeShelf(value) {
         // console.log(this.props.book.shelf)
         // this.props.book.shelf = value
-        this.props.onChangeShelf(this.props.book, value)
+        console.log(this.props.onChangeShelf)
         BooksAPI.update(this.props.book, value)
 
 
