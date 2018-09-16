@@ -1,17 +1,18 @@
 # MyReads Project
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+Hi there! I modified Udacity's React Fundamentals final assessment starter code into this beautiful thing you're lookin' at.
+It was hard, I learned a lot! I spent a lot of time frustrated because state and props were really confusing at first.
+This was the first time I mostly relied on arrow functions to get work done. I suffered, I grew, life moves on. Now, you're here looking at it, and I appreciate that!
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+## Runnin' the thing
 
-## TL;DR
-
-To get started developing right away:
+Easy-peasy. Clone or fork this repo, `cd` into the repo, and then:
 
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
-## What You're Getting
+## Udacity was kind enough to provide this handly little file tree for us
+## as well as some other goodies listed below. Thanks everyone!
 ```bash
 ├── CONTRIBUTING.md
 ├── README.md - This file.
@@ -19,10 +20,10 @@ To get started developing right away:
 ├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
 ├── public
 │   ├── favicon.ico # React Icon, You may change if you wish.
-│   └── index.html # DO NOT MODIFY
+│   └── index.html # Udacity said not to modify this but I needed to glam up that header!
 └── src
     ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
+    ├── App.js # This is the root of your app.
     ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
     ├── icons # Helpful images for your app. Use at your discretion.
@@ -33,11 +34,11 @@ To get started developing right away:
     └── index.js # You should not need to modify this file. It is used for DOM rendering only.
 ```
 
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
+
 
 ## Backend Server
 
-To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
+Udacity provided a backend server for me (and potentially you!) to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
 
 * [`getAll`](#getall)
 * [`update`](#update)
@@ -63,7 +64,7 @@ update(book, shelf)
 ```
 
 * book: `<Object>` containing at minimum an `id` attribute
-* shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]  
+* shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]
 * Returns a Promise which resolves to a JSON object containing the response data of the POST request
 
 ### `search`
