@@ -9,6 +9,7 @@ class BooksApp extends React.Component {
 
   state = {
     books: [], // JUST ADD THINGS TO THIS ARRAY AND FILTER IT
+    update: true
   }
 
   getAll() {
@@ -17,6 +18,7 @@ class BooksApp extends React.Component {
   }
 
   updateShelf = (book) => {
+    (this.state.books.includes(book)) ? this.setState({update: true}) :
     this.setState( (prevState) => (
       { books: prevState.books.concat(book)
     }) )
