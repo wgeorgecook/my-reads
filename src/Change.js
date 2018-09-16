@@ -4,14 +4,17 @@ import * as BooksAPI from './BooksAPI'
 class Change extends Component {
 
     registerChange = (e) => {
-        console.log(e.target.value)
+        // This is our new shelf to pass to the book object
         this.changeShelf(e.target.value)
     }
 
     changeShelf(newShelf) {
+        // Update the book's shelf on the object directly
         let book = this.props.book
         book.shelf = newShelf
+        // Pass onto the change shelf method
         this.props.onChangeShelf(book)
+        // Update the book's shelf on the backend
         BooksAPI.update(book, newShelf)
     }
 

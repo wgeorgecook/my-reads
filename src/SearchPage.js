@@ -14,26 +14,29 @@ class SearchBar extends Component {
 
 
     updateQuery = (query) => {
+      // Live update search terms
       this.setState({ query });
       this.checkBooks(query)
     }
 
     checkBooks = (query) => {
+      // If the query is empty, reset the shelf
       (query.length > 0) ? this.searchBooks(query) : this.clearBooks()
     }
 
     searchBooks = (query) => {
+      // Load books from the query into the search shelf
       BooksAPI.search(query)
       .then( (availableBooks) => this.setState( {availableBooks} ) )
-      .then( () => console.log(this.state.availableBooks) )
-
     }
 
     clearBooks() {
+      // Clear the shelf
       this.setState( { availableBooks: [] })
     }
 
     updateShelf = (book) => {
+        // Pass a book object to update the main view
         this.props.onModifyShelf(book)
     }
 

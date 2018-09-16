@@ -18,6 +18,8 @@ class BooksApp extends React.Component {
   }
 
   updateShelf = (book) => {
+    // If the array already contains the book, just refresh the view
+    // to show it in the new shelf
     (this.state.books.includes(book)) ? this.setState({update: true}) :
     this.setState( (prevState) => (
       { books: prevState.books.concat(book)
@@ -27,6 +29,7 @@ class BooksApp extends React.Component {
 
 
   componentDidMount() {
+    // Populate some sample books
     this.getAll()
   }
 

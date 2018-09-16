@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Change from './Change.js'
-// import BooksApp from './App.js'
+
 
 
 class Shelf extends Component {
 
 
     updateShelf = (book, shelf) => {
+        // Pass the book and shelf to the modify shelf method in the main view
         this.props.onModifyShelf(book, shelf)
     }
 
