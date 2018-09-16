@@ -8,37 +8,50 @@ import './App.css'
 class BooksApp extends React.Component {
 
   state = {
-    books: []
+    books: [], // JUST ADD THINGS TO THIS ARRAY AND FILTER IT
+    update: true
   }
 
   getAll() {
     BooksAPI.getAll()
-    .then( (books) => this.setState({ books }))
+    .then( (books) => this.setState( { books } ) )
   }
 
+  updateShelf = (book) => {
+    // If the array already contains the book, just refresh the view
+    // to show it in the new shelf
+    (this.state.books.includes(book)) ? this.setState({update: true}) :
+    this.setState( (prevState) => (
+      { books: prevState.books.concat(book)
+    }) )
+  }
+
+
+
   componentDidMount() {
+    // Populate some sample books
     this.getAll()
   }
 
   render() {
     return (
       <div className="app">
-
       <Route path='/search' exact render={ () => (
           <SearchPage
-            defaultBooks={ this.state.books }
+            onModifyShelf={this.updateShelf}
           />
         )}
       />
 
       <Route path='/' exact render={ () => (
           <Shelf
-            shelves={[
-              { name: "Currently Reading", category: 'currentlyReading' },
+            shelves={
+              [{ name: "Currently Reading", category: 'currentlyReading'},
               { name: "Want to Read", category: 'wantToRead'},
-              { name: "Read", category: 'read'}
-            ]}
-            defaultBooks ={ this.state.books }
+              { name: "Read", category: 'read'}]
+            }
+            books={this.state.books}
+            onModifyShelf={this.updateShelf}
           />
         )}
 

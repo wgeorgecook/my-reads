@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Change from './Change.js'
+
+
 
 class Shelf extends Component {
 
-    changeButton =
-        <div className="book-shelf-changer">
-        <select>
-            <option value="move" disabled>Move to...</option>
-            <option value="currentlyReading">Currently Reading</option>
-            <option value="wantToRead">Want to Read</option>
-            <option value="read">Read</option>
-            <option value="none">None</option>
-        </select>
-        </div>
+
+    updateShelf = (book, shelf) => {
+        // Pass the book and shelf to the modify shelf method in the main view
+        this.props.onModifyShelf(book, shelf)
+    }
+
+
 
     render() {
         return (
@@ -22,25 +22,28 @@ class Shelf extends Component {
             </div>
             <div className="list-books-content">
               <div className='shelf-map'>
-
-
                 { this.props.shelves.map( (shelf, index) =>
                 <div className="bookshelf" key={index}>
                   <h2 className="bookshelf-title">{ shelf.name }</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                        { this.props.defaultBooks.filter(books => books.shelf === shelf.category).map( (book, bookIndex) =>
-                            <li key={bookIndex}>
-                            <div className="book">
-                                <div className="book-top">
-                                <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
-                                    { this.changeButton }
+                        { (this.props.books.length > 0) ?
+                            this.props.books.filter((book) => book.shelf === shelf.category).map((book, bookIndex) =>
+                                <li key={bookIndex}>
+                                <div className="book">
+                                    <div className="book-top">
+                                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
+                                        <Change
+                                            book={book}
+                                            onChangeShelf={this.updateShelf}
+                                        />
+                                    </div>
+                                    <div className="book-title">{book.title}</div>
+                                    <div className="book-authors">{book.authors}</div>
                                 </div>
-                                <div className="book-title">{book.title}</div>
-                                <div className="book-authors">{book.authors}</div>
-                            </div>
-                            </li>
-                        )}
+                                </li>
+                            ) : `No books in ${shelf.name}, search to add some!`
+                        }
                     </ol>
                   </div>
                 </div>

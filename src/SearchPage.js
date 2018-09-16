@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
+import Change from './Change.js'
+
 
 class SearchBar extends Component {
 
@@ -9,36 +11,33 @@ class SearchBar extends Component {
       availableBooks: [],
     }
 
-    changeButton =
-        <div className="book-shelf-changer">
-        <select>
-            <option value="move" disabled>Move to...</option>
-            <option value="currentlyReading">Currently Reading</option>
-            <option value="wantToRead">Want to Read</option>
-            <option value="read">Read</option>
-            <option value="none">None</option>
-        </select>
-        </div>
 
 
     updateQuery = (query) => {
+      // Live update search terms
       this.setState({ query });
       this.checkBooks(query)
     }
 
     checkBooks = (query) => {
+      // If the query is empty, reset the shelf
       (query.length > 0) ? this.searchBooks(query) : this.clearBooks()
     }
 
     searchBooks = (query) => {
+      // Load books from the query into the search shelf
       BooksAPI.search(query)
       .then( (availableBooks) => this.setState( {availableBooks} ) )
-      .then( () => console.log(this.state.availableBooks) )
-
     }
 
     clearBooks() {
-      this.setState( { availableBooks: this.props.defaultBooks })
+      // Clear the shelf
+      this.setState( { availableBooks: [] })
+    }
+
+    updateShelf = (book) => {
+        // Pass a book object to update the main view
+        this.props.onModifyShelf(book)
     }
 
     componentDidMount() {
@@ -67,8 +66,14 @@ class SearchBar extends Component {
                   <li key={book.id}>
                     <div className="book">
                       <div className="book-top">
-                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
-                        {this.changeButton}
+                      { (book.imageLinks) ?
+                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div> :
+                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(https://www.google.com/search?q=no+image&tbm=isch&source=iu&ictx=1&fir=zK3_S7lOQ0LI6M%253A%252C029W-ajBtZqZzM%252C_&usg=AFrqEzclmm0bX0EC_BHoSGDZD9in3lmmHg&sa=X&ved=2ahUKEwjwxdTx277dAhUTO30KHXXyCwQQ9QEwAHoECAUQBA#)` }}></div>
+                      }
+                        <Change
+                            book={book}
+                            onChangeShelf={this.updateShelf}
+                        />
                       </div>
                       <div className="book-title">{book.title}</div>
                       <div className="book-authors">{book.authors}</div>
