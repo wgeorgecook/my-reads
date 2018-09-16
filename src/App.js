@@ -16,14 +16,23 @@ class BooksApp extends React.Component {
 
   getAll() {
     BooksAPI.getAll()
-    .then( (books) => this.setState({ books }))
+    .then( (books) => this.setState( { books } ) )
+    .then(console.log(this.state.books))
+    /*
+    .then( (books) => books.map( (book) => // console.log(this.state[book.shelf]) ) )
+
+      this.setState( { [book.shelf]: book } )
+    ))
+    */
+
+    // .then( (books) => books.map( (book) => this.setState({ [book.shelf]: book })))
   }
 
   updateShelf = (books, shelf) => {
     let oldShelf = this.state[shelf]
     let newShelf = oldShelf.push(books)
     this.setState({ [shelf]: newShelf })
-    console.log(this.state)
+    console.log(this.state[shelf])
   }
 
   componentDidMount() {
@@ -33,7 +42,7 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-
+      <div>Books: {this.state.read.title}</div>
       <Route path='/search' exact render={ () => (
           <SearchPage
             onModifyShelf={this.updateShelf}

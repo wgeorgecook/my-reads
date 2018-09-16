@@ -7,13 +7,8 @@ import Change from './Change.js'
 class Shelf extends Component {
 
 
-    updateShelf = (shelf) => {
-        /*
-        let oldShelf = this.state[shelf]
-        let newShelf = oldShelf.push(book)
-        this.setState( {[shelf]: newShelf} )
-        */
-        console.log(this.state[shelf])
+    updateShelf = (book, shelf) => {
+        this.props.onModifyShelf(book, shelf)
     }
 
 
