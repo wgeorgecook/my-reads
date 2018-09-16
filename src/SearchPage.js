@@ -33,8 +33,8 @@ class SearchBar extends Component {
       this.setState( { availableBooks: [] })
     }
 
-    updateShelf = (book, shelf) => {
-        this.props.onModifyShelf(book, shelf)
+    updateShelf = (book, shelf, oldShelf) => {
+        this.props.onModifyShelf(book, shelf, oldShelf)
     }
 
     componentDidMount() {

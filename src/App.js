@@ -28,10 +28,20 @@ class BooksApp extends React.Component {
     // .then( (books) => books.map( (book) => this.setState({ [book.shelf]: book })))
   }
 
-  updateShelf = (books, shelf) => {
-    this.setState( (prevState) => ({ [shelf]: prevState[shelf].concat(books) }) )
-    console.log(this.state[shelf])
+  updateShelf = (books, shelf, oldShelf) => {
+    (oldShelf) ?
+    this.setState( (prevState) => (
+      {[shelf]: prevState[shelf].concat(books),
+      [oldShelf]: prevState[oldShelf].splice( (oldShelf.indexOf(books)), 1)
+    }) )
+    :
+    this.setState( (prevState) => (
+      {[shelf]: prevState[shelf].concat(books)
+    }) )
+
   }
+
+
 
   componentDidMount() {
     this.getAll()

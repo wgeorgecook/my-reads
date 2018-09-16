@@ -8,19 +8,18 @@ class Change extends Component {
         this.changeShelf(e.target.value)
     }
 
-    changeShelf(value) {
-        // console.log(this.props.book.shelf)
-        // this.props.book.shelf = value
-        this.props.onChangeShelf(this.props.book, value)
-        BooksAPI.update(this.props.book, value)
-
-
+    changeShelf(newShelf) {
+        let book = this.props.book
+        const oldShelf = this.props.book.shelf
+        book.shelf = newShelf
+        this.props.onChangeShelf(book, newShelf, oldShelf)
+        BooksAPI.update(book, newShelf)
     }
 
     render() {
         return (
             <div className="book-shelf-changer">
-                <select onChange={this.registerChange} value={this.props.book.shelf}>
+                <select onChange={this.registerChange} value={this.props.book.shelf || "none"}>
                     <option value="move" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
