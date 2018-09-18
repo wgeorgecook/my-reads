@@ -1,7 +1,8 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Shelf from './Shelf.js'
 import SearchPage from './SearchPage.js'
+import NotFound from './FourOhFour.js'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
@@ -42,27 +43,32 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-      <Route path='/search' exact render={ () => (
-          <SearchPage
-            onModifyShelf={this.updateShelf}
-            shelfBooks={this.state.books}
+        <Switch>
+          <Route path='/search' exact render={ () => (
+              <SearchPage
+                onModifyShelf={this.updateShelf}
+                shelfBooks={this.state.books}
+              />
+            )}
           />
-        )}
-      />
 
-      <Route path='/' exact render={ () => (
-          <Shelf
-            shelves={
-              [{ name: "Currently Reading", category: 'currentlyReading'},
-              { name: "Want to Read", category: 'wantToRead'},
-              { name: "Read", category: 'read'}]
-            }
-            shelfBooks={this.state.books}
-            onModifyShelf={this.updateShelf}
+          <Route path='/' exact render={ () => (
+              <Shelf
+                shelves={
+                  [{ name: "Currently Reading", category: 'currentlyReading'},
+                  { name: "Want to Read", category: 'wantToRead'},
+                  { name: "Read", category: 'read'}]
+                }
+                shelfBooks={this.state.books}
+                onModifyShelf={this.updateShelf}
+              />
+            )}
+
           />
-        )}
 
-      />
+          <Route component={NotFound}/>
+
+        </Switch>
       </div>
     )
   }
