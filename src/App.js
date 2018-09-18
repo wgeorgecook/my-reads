@@ -17,13 +17,27 @@ class BooksApp extends React.Component {
     .then( (books) => this.setState( { books } ) )
   }
 
-  updateShelf = (book) => {
+  updateShelfOld = (book) => {
     // If the array already contains the book, just refresh the view
     // to show it in the new shelf
     (this.state.books.includes(book)) ? this.setState({update: true}) :
     this.setState( (prevState) => (
       { books: prevState.books.concat(book)
     }) )
+  }
+
+  updateShelf = (book) => {
+    // If the array already contains the book, just refresh the view
+    // to show it in the new shelf
+    let currentShelves = this.state.books.filter( books => (books.id === book.id) )
+    if (currentShelves.length > 0) {
+      currentShelves[0].shelf = book.shelf
+      this.setState( {update: true})
+    } else {
+      this.setState( (prevState) => (
+        {books: prevState.books.concat(book)}
+      ))
+    }
   }
 
 
