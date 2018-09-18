@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Change from './Change.js'
-
+import Book from './Book.js'
 
 
 class Shelf extends Component {
@@ -30,17 +29,9 @@ class Shelf extends Component {
                         { (this.props.books.length > 0) ?
                             this.props.books.filter((book) => book.shelf === shelf.category).map((book, bookIndex) =>
                                 <li key={bookIndex}>
-                                <div className="book">
-                                    <div className="book-top">
-                                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
-                                        <Change
-                                            book={book}
-                                            onChangeShelf={this.updateShelf}
-                                        />
-                                    </div>
-                                    <div className="book-title">{book.title}</div>
-                                    <div className="book-authors">{book.authors}</div>
-                                </div>
+                                    <Book
+                                        book={book}
+                                    />
                                 </li>
                             ) : `No books in ${shelf.name}, search to add some!`
                         }
