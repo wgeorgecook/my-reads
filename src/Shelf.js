@@ -26,12 +26,13 @@ class Shelf extends Component {
                   <h2 className="bookshelf-title">{ shelf.name }</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                        { (this.props.books.length > 0) ?
-                            this.props.books.filter((book) => book.shelf === shelf.category).map((book, bookIndex) =>
+                        { (this.props.shelfBooks.length > 0) ?
+                            this.props.shelfBooks.filter((book) => book.shelf === shelf.category).map((book, bookIndex) =>
                                 <li key={bookIndex}>
                                     <Book
                                         book={book}
                                         onModifyShelf={this.updateShelf}
+                                        shelfBooks={this.props.shelfBooks}
                                     />
                                 </li>
                             ) : `No books in ${shelf.name}, search to add some!`

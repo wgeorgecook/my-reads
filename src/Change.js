@@ -18,10 +18,26 @@ class Change extends Component {
         BooksAPI.update(book, newShelf)
     }
 
+
+    checkValue(book) {
+        let shelfBooks = this.props.shelfBooks
+        if (shelfBooks.length > 0) {
+           let theOne = shelfBooks.filter( (books) => (books.id === book.id) );
+           if (theOne.length > 0) {
+            return theOne[0].shelf
+           } else {
+               return "none"
+           }
+        } else {
+            return "none"
+        }
+    }
+
+
     render() {
         return (
             <div className="book-shelf-changer">
-                <select onChange={this.registerChange} value={this.props.book.shelf || "none"}>
+                <select onChange={this.registerChange} value={this.checkValue(this.props.book)}>
                     <option value="move" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
