@@ -20,8 +20,17 @@ class Change extends Component {
 
 
     checkValue(book) {
-        console.log(this.props.shelfBooks)
-
+        let shelfBooks = this.props.shelfBooks
+        if (shelfBooks.length > 0) {
+           let theOne = shelfBooks.filter( (books) => (books.id === book.id) );
+           if (theOne.length > 0) {
+            return theOne[0].shelf
+           } else {
+               return "none"
+           }
+        } else {
+            return "none"
+        }
     }
 
 
