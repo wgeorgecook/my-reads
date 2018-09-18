@@ -178,3 +178,23 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+
+
+/* 404 page */
+.four-oh-four {
+  background-color: lightsalmon;
+  font-weight: 200;
+  font-size: 32pt;
+  width: 80%;
+  margin: 1em auto;
+  padding: .15em;
+  border-radius: 1%;
+}
+
+.four-oh-four #top-404 {
+  font-weight: 400;
+  font-size: 48pt;
+  margin: auto;
+  color: lightblue;
+  font-family: pacifico, sans-serif;
+}
