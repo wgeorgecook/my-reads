@@ -31,6 +31,7 @@ class Shelf extends Component {
                                 <li key={bookIndex}>
                                     <Book
                                         book={book}
+                                        onModifyShelf={this.updateShelf}
                                     />
                                 </li>
                             ) : `No books in ${shelf.name}, search to add some!`

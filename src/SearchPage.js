@@ -66,7 +66,7 @@ class SearchBar extends Component {
                   <li key={book.id}>
                   <Book
                     book={book}
-                    onChange={this.updateShelf}
+                    onModifyShelf={this.updateShelf}
                   />
                   </li>
               ) : null }

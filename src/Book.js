@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import Change from './Change.js'
-import * as BooksAPI from './BooksAPI'
 
 
 
 
 class Book extends Component {
+
+    updateShelf = (book) => {
+        // Pass a book object to update the main view
+        this.props.onModifyShelf(book)
+    }
+
 
     render() {
         return (
@@ -15,7 +20,9 @@ class Book extends Component {
 
               <Change
                   book={this.props.book}
+                  onChangeShelf={this.updateShelf}
               />
+
             </div>
             <div className="book-title">{this.props.book.title}</div>
             <div className="book-authors">{this.props.book.authors}</div>
