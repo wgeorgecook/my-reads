@@ -21,6 +21,7 @@ class Book extends Component {
               <Change
                   book={this.props.book}
                   onChangeShelf={this.updateShelf}
+                  shelfBooks={this.props.shelfBooks}
               />
 
             </div>

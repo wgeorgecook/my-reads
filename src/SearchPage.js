@@ -70,6 +70,7 @@ class SearchBar extends Component {
                   <Book
                     book={book}
                     onModifyShelf={this.updateShelf}
+                    shelfBooks={this.props.shelfBooks}
                   />
                   </li>
               ) : null }
